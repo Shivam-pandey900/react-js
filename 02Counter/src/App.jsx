@@ -4,20 +4,44 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 
+
 function App() {
 
-  // let counter = 15;
-  // useState is a hook and a kind of method which return an array with two elements.
-  let [counter , setCounter] = useState(15);
+
+  let [counter , setCounter] = useState(10);
+
+  // useState returns an array.
+  // here counter is a variable while setCounter is a function. 
+
 
   function addValue(){
     // counter = counter + 1;
     // setCounter(counter)
     if(counter == 20)
         return
+    // setCounter(counter + 1)
+
+    // an interview question what will happen if i write multiple setCounter one after another
     setCounter(counter + 1)
-    console.log(counter);
-  }
+    setCounter(counter + 1)
+    setCounter(counter + 1)
+    setCounter(counter + 1)
+
+    // there will be a single update of +1
+    // React sends as batches so only single one will work.
+
+    // if setCounter was written like this then it would have done +4
+
+    setCounter((prevCounter) => prevCounter + 1)
+    setCounter(prevCounter => prevCounter + 1)
+    setCounter(prevCounter => prevCounter + 1)
+    setCounter(prevCounter => prevCounter + 1)
+}
+
+
+  // let counter = 15;
+  // useState is a hook and a kind of meth only because react treats them in batches
+
 
   function removeValue(){
     if(counter == 0)
@@ -30,6 +54,8 @@ function App() {
 
   // this way the value of counter is not updating , to do so 
   // we will have to use hooks - useState.
+
+
 
   return (
     <>
