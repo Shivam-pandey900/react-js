@@ -1,14 +1,47 @@
-import React from 'react';
+import React, { Children } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
+function Appp(){
+  return(
+    <h1>Hello how are you?</h1>
+  )
+}
+
+// custom reactElement
+
+// const reactElement = {
+//   type: 'a',
+//   props: {
+//     href: "https://google.com",
+//     target: "_blank",
+//   },
+//   Children: "click me to visit google",
+// }
+
+// not working as above
+
+// const reactElement = <a href='https://google.com' target='_blank'>Click me to visit google</a>
+
+// above one works fine
+
+const anotherchild = "<br> chai aur React!"
+
+const reactElement = React.createElement(
+  'a',
+  {href: "https://google.com",
+   target: "_blank"},
+   "Click me to Visit Google",
+   anotherchild
+)
+
+// suppose if we want to add a variable then how can we do that
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+
+    // <App />
+    reactElement
+
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
